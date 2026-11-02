@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0757a6"><title>Ande Defar Koudiane | Cotisations</title>
+<style>
+:root{--blue:#0757a6;--blue2:#0b72d0;--ink:#172033;--muted:#64748b;--bg:#f3f7fc;--line:#dbe5f0;--green:#137547}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:linear-gradient(135deg,#064b91,#0b72d0);color:#fff;padding:28px 18px 45px;text-align:center}.logo{width:58px;height:58px;margin:auto;border:2px solid #ffffff99;border-radius:50%;display:grid;place-items:center;font-size:24px;font-weight:800}h1{font-size:clamp(23px,5vw,34px);margin:9px 0}.sub{margin:0;color:#e6f2ff}
+main{width:min(960px,93%);margin:-22px auto 36px}.card{background:white;border:1px solid var(--line);border-radius:17px;padding:20px;margin-bottom:16px;box-shadow:0 8px 24px #18365b0c}
+h2{font-size:20px;margin:0 0 8px}.muted{color:var(--muted);line-height:1.5;margin:5px 0 15px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}.pay{border:1px solid var(--line);border-radius:14px;padding:16px;text-align:center}.amount{font-size:32px;font-weight:800;color:var(--blue);margin:6px 0 12px}
+.btn{display:inline-block;text-decoration:none;text-align:center;background:var(--blue);color:white;padding:12px 15px;border:0;border-radius:10px;font-weight:700;cursor:pointer;width:100%;font-size:15px}.btn.alt{background:#e8f2fc;color:#0757a6}.btn.green{background:var(--green)}.field{display:block;margin:13px 0 6px;font-weight:650}input,select{width:100%;padding:13px;border:1px solid #cbd7e5;border-radius:10px;font:inherit;background:#fff}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:520px){.row{grid-template-columns:1fr}}
+.note{background:#eef6ff;border-left:4px solid var(--blue2);padding:12px 14px;border-radius:8px;color:#28415f;line-height:1.5;font-size:14px}.success{background:#eaf8f0;border-left-color:#16834a;color:#145b37}.error{background:#fff0f0;border-left-color:#c33;color:#822}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.stat{background:#f5f8fc;border:1px solid var(--line);border-radius:12px;padding:12px}.stat strong{display:block;color:var(--blue);font-size:22px}.stat span{font-size:12px;color:var(--muted)}
+table{width:100%;border-collapse:collapse;margin-top:12px;min-width:570px}th,td{text-align:left;padding:10px 7px;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--muted);font-size:12px}.tablewrap{overflow:auto}.tag{display:inline-block;border-radius:20px;padding:4px 8px;font-size:12px;font-weight:700;background:#fff3d8;color:#8a5700}.tag.ok{background:#e5f7ed;color:#17663d}.tag.no{background:#ffeded;color:#9b2929}.small{font-size:12px;color:var(--muted)}.hidden{display:none!important}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.tabs button{width:auto}.footer{text-align:center;color:var(--muted);font-size:13px;padding:8px 18px 28px}
+</style></head>
+<body>
+<header><div class="logo">ADK</div><h1>ANDE DEFAR KOUDIANE</h1><p class="sub">Plateforme des cotisations des membres</p></header>
+<main>
+<section class="card"><h2>Bienvenue aux membres</h2><p class="muted">Choisissez le montant de votre cotisation, payez avec Wave, puis déclarez votre paiement ici.</p>
+<div class="grid">
+<div class="pay"><div>Cotisation membre</div><div class="amount">250 F</div><a class="btn" href="https://pay.wave.com/m/M_sn_s8o_TUpfCst2/c/sn/?amount=250" target="_blank" rel="noopener">Payer 250 F avec Wave</a></div>
+<div class="pay"><div>Cotisation bureau</div><div class="amount">500 F</div><a class="btn" href="https://pay.wave.com/m/M_sn_s8o_TUpfCst2/c/sn/?amount=500" target="_blank" rel="noopener">Payer 500 F avec Wave</a></div>
+</div></section>
+<section class="card"><h2>Déclarer ma cotisation</h2><p class="muted">Après le paiement Wave, remplissez les informations. Votre déclaration sera visible dans la liste commune après connexion de la base de données.</p>
+<form id="memberForm">
+<label class="field" for="memberName">Nom et prénom</label><input id="memberName" required maxlength="90" placeholder="Ex. Modou Manga">
+<div class="row"><div><label class="field" for="memberAmount">Montant payé</label><select id="memberAmount" required><option value="">Choisir</option><option value="250">250 F</option><option value="500">500 F</option></select></div><div><label class="field" for="memberMonth">Mois</label><select id="memberMonth" required><option value="">Choisir</option><option>Janvier</option><option>Février</option><option>Mars</option><option>Avril</option><option>Mai</option><option>Juin</option><option>Juillet</option><option>Août</option><option>Septembre</option><option>Octobre</option><option>Novembre</option><option>Décembre</option></select></div></div>
+<label class="field" for="receipt">Référence du paiement Wave (facultatif)</label><input id="receipt" maxlength="100" placeholder="Référence indiquée sur le reçu">
+<button class="btn" style="margin-top:16px" type="submit">Envoyer ma déclaration</button></form><p id="memberMsg" class="note hidden" aria-live="polite"></p></section>
+<section class="card"><h2>Liste commune des cotisations</h2><p class="muted">Les paiements ne sont comptabilisés qu'après vérification du trésorier.</p>
+<div class="stats"><div class="stat"><strong id="membersCount">—</strong><span>Personnes ayant cotisé</span></div><div class="stat"><strong id="count">—</strong><span>Cotisations validées</span></div><div class="stat"><strong id="total">—</strong><span>Total encaissé</span></div></div>
+<div class="tablewrap"><table><thead><tr><th>Membre</th><th>Montant</th><th>Mois</th><th>Statut</th></tr></thead><tbody id="payments"><tr><td colspan="4">Connexion à la base de données nécessaire.</td></tr></tbody></table></div>
+<p id="dbStatus" class="small">La base de données n'est pas encore configurée.</p></section>
+<section class="card"><h2>Espace trésorier</h2><p class="muted">Connexion réservée au trésorier pour vérifier les déclarations et confirmer les paiements.</p>
+<div id="loginPanel"><label class="field" for="email">E-mail du trésorier</label><input id="email" type="email" autocomplete="username" placeholder="adresse@email.com"><label class="field" for="password">Mot de passe</label><input id="password" type="password" autocomplete="current-password" placeholder="Mot de passe Supabase"><button class="btn" id="login" style="margin-top:14px">Se connecter</button></div>
+<div id="adminPanel" class="hidden"><div class="tabs"><button class="btn alt" id="refresh">Actualiser</button><button class="btn" id="logout">Se déconnecter</button></div><p class="small">Dans la liste ci-dessus, les boutons de validation apparaîtront pour les déclarations en attente.</p><div id="adminList"></div></div>
+<p id="adminMsg" class="note hidden" aria-live="polite"></p></section>
+<section class="card"><h2>À propos</h2><p class="muted">Plateforme officielle de cotisations de l'Association des jeunes Ande Defar Koudiane.</p><div class="note">La connexion Supabase doit être configurée avec les identifiants du projet et les règles SQL fournies dans le dossier. Ne partagez jamais la clé secrète « service_role » dans ce site.</div></section>
+</main><footer>© Ande Defar Koudiane — Espace cotisations</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* ÉTAPE DE CONFIGURATION : remplacer ces deux valeurs par celles du projet Supabase. */
+const SUPABASE_URL = "https://wkxipshntokzmkgywzko.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_f8yC8POBrnoYb-J1eS2QlA_aGhJpmD8";
+const configured = SUPABASE_URL.startsWith("https://") && !SUPABASE_ANON_KEY.startsWith("COLLER");
+const db = configured && window.supabase ? window.supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY) : null;
+const $=id=>document.getElementById(id);
+let currentSession=null;
+function say(id,msg,type=""){const el=$(id);el.textContent=msg;el.className="note"+(type?" "+type:"");el.classList.remove("hidden")}
+function money(n){return Number(n||0).toLocaleString("fr-FR")+" F"}
+function status(s){return s==="approved"?'<span class="tag ok">Validée</span>':s==="rejected"?'<span class="tag no">Refusée</span>':'<span class="tag">À vérifier</span>'}
+async function loadPayments(){
+ if(!db){$("dbStatus").textContent="Base de données non configurée : suivez le guide INSTALLATION.";return}
+ const [{data,error},{data:stats,error:statsError}]=await Promise.all([
+   db.from("cotisations").select("id,member_name,amount,month,status,created_at").order("created_at",{ascending:false}).limit(500),
+   db.from("cotisation_stats").select("cotisations_validees,membres_distincts,total_encaisse").single()
+ ]);
+ if(error){$("dbStatus").textContent="Erreur de lecture : "+error.message;return}
+ if(statsError){$("dbStatus").textContent="Erreur de statistiques : "+statsError.message;return}
+ const approved=data.filter(x=>x.status==="approved");
+ $("membersCount").textContent=stats.membres_distincts;
+ $("count").textContent=stats.cotisations_validees;
+ $("total").textContent=money(stats.total_encaisse);
+ $("payments").innerHTML=data.length?data.map(x=>`<tr><td>${escapeHtml(x.member_name)}</td><td>${money(x.amount)}</td><td>${escapeHtml(x.month)}</td><td>${status(x.status)}</td></tr>`).join(""):'<tr><td colspan="4">Aucune déclaration pour le moment.</td></tr>';
+ $("dbStatus").textContent="Liste commune actualisée.";
+ if(currentSession) renderAdmin(data);
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("memberForm").addEventListener("submit",async e=>{
+ e.preventDefault();if(!db){say("memberMsg","Le site n'est pas encore relié à la base de données. Le formulaire ne peut pas envoyer votre déclaration. Configurez Supabase avec le guide INSTALLATION.","error");return}
+ const row={member_name:$("memberName").value.trim(),amount:Number($("memberAmount").value),month:$("memberMonth").value,receipt_reference:$("receipt").value.trim()||null};
+ const {error}=await db.from("cotisations").insert(row);
+ if(error){say("memberMsg","Envoi impossible : "+error.message,"error");return}
+ e.target.reset();say("memberMsg","Déclaration envoyée ! Elle apparaîtra comme « À vérifier » jusqu'à la validation du trésorier.","success");loadPayments();
+});
+$("login").addEventListener("click",async()=>{
+ if(!db){say("adminMsg","Configurez d'abord Supabase dans le fichier index.html.","error");return}
+ const {data,error}=await db.auth.signInWithPassword({email:$("email").value,password:$("password").value});
+ if(error){say("adminMsg","Connexion impossible : vérifiez l'e-mail et le mot de passe.","error");return}
+ currentSession=data.session;$("loginPanel").classList.add("hidden");$("adminPanel").classList.remove("hidden");say("adminMsg","Connexion réussie.","success");loadPayments();
+});
+$("logout").addEventListener("click",async()=>{if(db)await db.auth.signOut();currentSession=null;$("adminPanel").classList.add("hidden");$("loginPanel").classList.remove("hidden");loadPayments()});
+$("refresh").addEventListener("click",loadPayments);
+function renderAdmin(rows){$("adminList").innerHTML=rows.filter(x=>x.status==="pending").map(x=>`<div class="note" style="margin:9px 0"><strong>${escapeHtml(x.member_name)}</strong> — ${money(x.amount)} — ${escapeHtml(x.month)}<div class="row" style="margin-top:9px"><button class="btn green" onclick="setStatus('${x.id}','approved')">Valider</button><button class="btn alt" onclick="setStatus('${x.id}','rejected')">Refuser</button></div></div>`).join("")||"Aucune déclaration en attente."}
+window.setStatus=async(id,value)=>{const {error}=await db.from("cotisations").update({status:value}).eq("id",id);if(error){say("adminMsg","Action refusée : vérifiez les droits du compte trésorier.","error");return}say("adminMsg","Statut mis à jour.","success");loadPayments()};
+if(db){db.auth.getSession().then(({data})=>{currentSession=data.session;if(currentSession){$("loginPanel").classList.add("hidden");$("adminPanel").classList.remove("hidden")}loadPayments()});db.auth.onAuthStateChange((_event,session)=>{currentSession=session})}
+</script></body></html>
